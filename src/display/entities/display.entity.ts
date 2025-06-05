@@ -5,11 +5,20 @@ export class Display {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ unique: true })
+  reference: string;
+
+  @Column({ unique: true })
+  slug: string;
+
   @Column()
   name: string;
 
   @Column()
   title: string;
+
+  @Column()
+  type: string;
 
   @Column({ nullable: true })
   created_by: number;
