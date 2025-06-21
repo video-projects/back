@@ -1,13 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'displays' })
 export class Display {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Index()
   @Column({ unique: true })
   reference: string;
 
+  @Index()
   @Column({ unique: true })
   slug: string;
 
@@ -40,6 +42,6 @@ export class Display {
   })
   updated_at: Date;
 
-  @Column({ type: 'boolean' })
+  @Column({ type: 'boolean', default: true })
   activate: boolean;
 }

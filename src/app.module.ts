@@ -2,9 +2,11 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DisplayService } from './display/display.service';
-import { DisplayController } from './display/display.controller';
 import { DisplayModule } from './display/display.module';
+import { SectionService } from './section/section.service';
+import { SectionController } from './section/section.controller';
+import { SectionModule } from './section/section.module';
+import { ChatGateway } from './chat/chat.gateway';
 
 @Module({
   imports: [
@@ -17,11 +19,13 @@ import { DisplayModule } from './display/display.module';
       database: 'mydb02',
       entities: ['src/**/*.entity.ts'],
       migrations: ['src/migrations/*.ts'],
+      autoLoadEntities: true,
       synchronize: false,
     }),
     DisplayModule,
+    SectionModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, SectionController],
+  providers: [AppService, SectionService, ChatGateway, ChatGateway],
 })
 export class AppModule {}
