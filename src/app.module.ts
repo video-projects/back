@@ -7,6 +7,8 @@ import { SectionService } from './section/section.service';
 import { SectionController } from './section/section.controller';
 import { SectionModule } from './section/section.module';
 import { ChatGateway } from './chat/chat.gateway';
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { ChatGateway } from './chat/chat.gateway';
     }),
     DisplayModule,
     SectionModule,
+    UsersModule,
+    AuthModule,
   ],
   controllers: [AppController, SectionController],
   providers: [AppService, SectionService, ChatGateway, ChatGateway],
